@@ -49,7 +49,7 @@ def get_packages():
 @premium_bp.route('/admin/premium_requests', methods=['GET'])
 @auth_required('token', 'session')
 @roles_accepted('admin')
-@permissions_accepted("admin-write")
+# @permissions_accepted("admin-write")
 def premium_requests():
     pending_premiums = PendingPremium.query.filter_by(approved=False).all()
     return render_template('admin/premium_requests.html', pending_premiums=pending_premiums)
@@ -57,7 +57,7 @@ def premium_requests():
 @premium_bp.route('/admin/approve_premium/<int:pending_id>', methods=['POST'])
 @auth_required('token', 'session')
 @roles_accepted('admin')
-@permissions_accepted("admin-write")
+# @permissions_accepted("admin-write")
 def approve_premium(pending_id):
     pending_premium = PendingPremium.query.get(pending_id)
     if not pending_premium:
@@ -90,7 +90,7 @@ def approve_premium(pending_id):
 @premium_bp.route('/admin/reject_premium/<int:pending_id>', methods=['POST'])
 @auth_required('token', 'session')
 @roles_accepted('admin')
-@permissions_accepted("admin-write")
+# @permissions_accepted("admin-write")
 def reject_premium(pending_id):
     pending_premium = PendingPremium.query.get(pending_id)
     if not pending_premium:

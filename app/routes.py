@@ -65,7 +65,7 @@ def check_fuel():
 @main.route('/admin/bot_fuel_requests', methods=['GET', 'POST'])
 @auth_required('token', 'session')
 @roles_accepted('admin')
-@permissions_accepted("admin-write")
+# @permissions_accepted("admin-write")
 def admin_bot_fuel_requests():
     transactions = BotFuelTransaction.query.all()
     return render_template('admin_bot_fuel_requests.html', transactions=transactions)
@@ -73,7 +73,7 @@ def admin_bot_fuel_requests():
 @main.route('/admin/approve_request/<int:transaction_id>', methods=['POST'])
 @auth_required('token', 'session')
 @roles_accepted('admin')
-@permissions_accepted("admin-write")
+# @permissions_accepted("admin-write")
 def approve_request(transaction_id):
     transaction = BotFuelTransaction.query.get(transaction_id)
     if transaction and not transaction.successful:
@@ -92,7 +92,7 @@ def approve_request(transaction_id):
 @main.route('/admin/reject_request/<int:transaction_id>', methods=['POST'])
 @auth_required('token', 'session')
 @roles_accepted('admin')
-@permissions_accepted("admin-write")
+# @permissions_accepted("admin-write")
 def reject_request(transaction_id):
     transaction = BotFuelTransaction.query.get(transaction_id)
     if transaction:
