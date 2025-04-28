@@ -26,11 +26,10 @@ def buy_premium():
     #     start_date = current_user.expire_date + datetime.timedelta(seconds=1)
     # else:
     #     start_date = now
-    if current_user.expire_date > now and current_user.expire_date is not None:
-            start_date = current_user.expire_date + datetime.timedelta(seconds=1)
+    if current_user.expire_date is not None and current_user.expire_date > now:
+        start_date = current_user.expire_date + datetime.timedelta(seconds=1)
     else:
-            start_date = now
-
+        start_date = now
 
     end_date = start_date + datetime.timedelta(days=package.duration_days)
 
