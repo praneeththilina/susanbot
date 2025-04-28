@@ -1,0 +1,82 @@
+{# djlint:off H030,H031 #}
+{% block doc -%}
+<!DOCTYPE html>
+{# <html{% block html_attribs %} lang="en" {% endblock html_attribs %}> #}
+<html lang="en" data-layout="twocolumn" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+  {%- block html %}
+  <head>
+    {%- block head %}
+    <title>{% block title %}{{ title|default }}{% endblock title %}</title>
+
+      {%- block metas %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="@AdvancedEMA" name="author" />
+    <meta name="description" content="A secure and efficient trading bot built with Flask, CCXT, and SQLAlchemy.">
+    <meta name="keywords" content="trading bot, Flask, CCXT, SQLAlchemy, cryptocurrency trading, automated trading">
+      {%- endblock metas %}
+
+      {%- block head_scripts %}
+          <!-- App favicon -->
+          <link rel="shortcut icon" href="assets/images/favicon.ico">
+          <!-- Layout config Js -->
+          <script src="{{ url_for('static', filename='assets/js/layout.js') }}"></script>
+          <!-- Bootstrap Css -->
+          <link href="{{ url_for('static', filename='assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+          <!-- Icons Css -->
+          <link href="{{ url_for('static', filename='assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+          <!-- App Css-->
+          <link href="{{ url_for('static', filename='assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+          <!-- custom Css-->
+          <link href="{{ url_for('static', filename='assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+
+          <!-- jsvectormap css -->
+          <link href="{{ url_for('static', filename='assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+          <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+          <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+          rel="stylesheet"
+      />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      {%- endblock head_scripts %}
+
+      {%- block styles %}
+
+      {%- endblock styles %}
+    {%- endblock head %}
+  </head>
+  <body {% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+      {% block navbar %}
+      {%- endblock navbar %}
+        {%- with messages = get_flashed_messages(with_categories=true) -%}
+            {% if messages %}
+              <div id="toast-container" class="fixed top-0 right-0 mt-4 mr-4 z-50">
+                {% for category, message in messages %}
+                  <div class="toast {{ category }} flex items-center p-4 mb-4 rounded-lg shadow-lg">
+                    <div class="ml-3 text-sm">{{ message }}</div>
+                    <button class="close-btn ml-auto text-white" onclick="this.parentElement.style.display='none';">×</button>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {%- endwith %}
+
+          
+        {% block content -%}
+        {%- endblock content %}
+      {% block scripts %}
+          <!-- JAVASCRIPT -->
+          <script src="{{ url_for('static', filename='assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+          <script src="{{ url_for('static', filename='assets/libs/feather-icons/feather.min.js') }}"></script>
+          <script src="{{ url_for('static', filename='assets/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>        <!-- particles js -->
+          <script src="{{ url_for('static', filename='assets/libs/particles.js/particles.js') }}"></script>
+          <!-- particles app js -->
+          <script src="{{ url_for('static', filename='assets/js/pages/particles.app.js') }}"></script>
+      {%- endblock scripts %}
+    {%- endblock body %}
+  </body>
+  {%- endblock html %}
+</html>
+{% endblock doc -%}
