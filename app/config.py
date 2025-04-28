@@ -17,6 +17,18 @@ class Config:
         'pool_recycle': 1800,  # Recycle connections after 30 minutes
     }
 
+    # Enable Token Authentication
+    SECURITY_TOKEN_AUTHENTICATION_HEADER = 'Authorization'
+    SECURITY_TOKEN_AUTHENTICATION_KEY = 'auth_token'
+    SECURITY_TOKEN_MAX_AGE = 3600  # Token valid for 1 hour
+
+    # Other important settings
+    SECURITY_LOGIN_WITHOUT_CONFIRMATION = True
+    SECURITY_LOGIN_WITHOUT_VERIFICATION = True
+    SECURITY_CSRF_IGNORE_UNAUTH_ENDPOINTS = True  # If you are using APIs
+
+
+
     # SECURITY_EMAIL_VALIDATOR_ARGS = {"check_deliverability": False}
     SECURITY_SEND_REGISTER_EMAIL = True
     SECURITY_POST_REGISTER_VIEW = 'security.login'
